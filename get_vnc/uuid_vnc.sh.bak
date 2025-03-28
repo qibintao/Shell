@@ -1,0 +1,7 @@
+#!/bin/bash
+#author: Qibintao
+
+# 获取传递的 IP 参数
+ip=$1
+uuid=$2
+ssh Foton_cloud_server$ip ps -ef |grep $uuid | awk '{for(i=1;i<=NF;i++) if($i ~ /-vnc/) printf "%s %s\n", $i, $(i+1)}'
